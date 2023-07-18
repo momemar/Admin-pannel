@@ -5,6 +5,7 @@ const Signup = (props) => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [passwordStrength, setPasswordStrength] = useState('');
+  const [agreedToPrivacyPolicy, setAgreedToPrivacyPolicy] = useState(false); // Step 1: State for the checkbox
 
   const handlePasswordChange = (e) => {
     const value = e.target.value;
@@ -18,10 +19,11 @@ const Signup = (props) => {
     const hasNumber = /\d/.test(password);
     const hasUpper = /[A-Z]/.test(password);
     const hasLower = /[a-z]/.test(password);
+    const hasSpecial = /[!@#$%^&*()_+{}\[\]:;<>,.?~\-=/\\|]/.test(password);
 
-    if (password.length >= minLength && hasNumber && hasUpper && hasLower) {
+    if (password.length >= minLength && hasNumber && hasUpper && hasLower && hasSpecial) {
       setPasswordStrength('strong');
-    } else if (password.length >= minLength && (hasNumber || hasUpper || hasLower)) {
+    } else if (password.length >= minLength && (hasNumber || hasUpper || hasLower || hasSpecial)) {
       setPasswordStrength('medium');
     } else {
       setPasswordStrength('weak');
@@ -30,9 +32,17 @@ const Signup = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!agreedToPrivacyPolicy) {
+      alert('Please agree to the Privacy Policy before signing up.');
+      return;
+    }
     console.log('Name:', name);
     console.log('Email:', email);
     console.log('Password:', password);
+  };
+  const handlePrivacyPolicyLinkClick = () => {
+    // Replace 'https://your-privacy-policy-url.com' with the actual URL of your Privacy Policy
+    window.open('https://your-privacy-policy-url.com', '_blank');
   };
 
   return (
@@ -65,11 +75,26 @@ const Signup = (props) => {
           id='password'
           name='password'
         />
+        <div>
+          <input
+            type='checkbox'
+            id='privacyPolicyCheckbox'
+            checked={agreedToPrivacyPolicy}
+            onChange={() => setAgreedToPrivacyPolicy(!agreedToPrivacyPolicy)}
+          />
+          <label htmlFor='privacyPolicyCheckbox' style={{ fontSize: '8px' }}>
+            I agree with the
+            <a href='#' onClick={handlePrivacyPolicyLinkClick}>
+              Privacy Policy
+            </a>
+          </label>
+        </div>
+
         {passwordStrength === 'weak' && <p style={{ color: 'red', fontSize: '8px' }}>Password Strength: Weak</p>}
         {passwordStrength === 'medium' && <p style={{ color: 'yellow', fontSize: '8px' }}>Password Strength: Medium</p>}
         {passwordStrength === 'strong' && <p style={{ color: 'green', fontSize: '8px' }}>Password Strength: Strong</p>}
         <button className='link-btn' type='submit'>
-          Sign up
+          Create Account
         </button>
       </form>
       <button onClick={() => props.onFormSwitch('login')}>Already have an account? Login here</button>

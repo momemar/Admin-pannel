@@ -1,0 +1,23 @@
+.remember-me-container {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    font-size: 0.6rem;
+}
+
+
+
+.custom-small-button {
+    font-size: 6px;
+    padding: 5px 10px;
+    max-width: 70px;
+    width: 100%;
+    margin: 0 auto;
+
+}
+
+.login-switch-button {
+    font-size: 6px;
+    border: 1px solid #f7f5f5;
+    background-color: aliceblue;
+}

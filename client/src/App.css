@@ -21,7 +21,7 @@
 .login-form {
     display: flex;
     flex-direction: column;
-    border: 1px solid #121010;
+    border: 1px solid #f7f5f5;
     padding: 20px;
     background-color: aliceblue;
 }
@@ -37,11 +37,4 @@ input {
 
 .link-btn {
     background-color: rgb(28, 126, 28);
-}
-
-.remember-me-container {
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    font-size: 0.6rem;
 }

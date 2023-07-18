@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './pages.css/Signup.css'
 
 const Signup = (props) => {
   const [email, setEmail] = useState('');
@@ -14,7 +17,6 @@ const Signup = (props) => {
   };
 
   const checkPasswordStrength = (password) => {
-    // Password strength criteria (e.g., minimum length, complexity)
     const minLength = 8;
     const hasNumber = /\d/.test(password);
     const hasUpper = /[A-Z]/.test(password);
@@ -46,7 +48,7 @@ const Signup = (props) => {
   };
 
   return (
-    <div className='auth-form-container'>
+    <div className='auth-form-container' style={{ maxWidth: '400px', margin: '0 auto' }}>
       <form className='signup-form' onSubmit={handleSubmit}>
         <label htmlFor='name'>Full Name</label>
         <input
@@ -93,13 +95,12 @@ const Signup = (props) => {
         {passwordStrength === 'weak' && <p style={{ color: 'red', fontSize: '8px' }}>Password Strength: Weak</p>}
         {passwordStrength === 'medium' && <p style={{ color: 'yellow', fontSize: '8px' }}>Password Strength: Medium</p>}
         {passwordStrength === 'strong' && <p style={{ color: 'green', fontSize: '8px' }}>Password Strength: Strong</p>}
-        <button className='link-btn' type='submit'>
+        <Button className='link-btn custom-small-button' type='submit'>
           Create Account
-        </button>
+        </Button>
       </form>
-      <button onClick={() => props.onFormSwitch('login')}>Already have an account? Login here</button>
+      <button className='login-switch-button btn-sm btn-secondary' onClick={() => props.onFormSwitch('login')}>Already have an account? Login here</button>
     </div>
   );
 };
-
 export default Signup;

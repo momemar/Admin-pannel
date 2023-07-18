@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './pages.css/Signup.css'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { MdEmail } from 'react-icons/md'
+import { FaLock } from 'react-icons/fa'
 
 const Signup = (props) => {
   const [email, setEmail] = useState('');
@@ -50,7 +53,9 @@ const Signup = (props) => {
   return (
     <div className='auth-form-container' style={{ maxWidth: '400px', margin: '0 auto' }}>
       <form className='signup-form' onSubmit={handleSubmit}>
-        <label htmlFor='name'>Full Name</label>
+        <label htmlFor='name'>
+          <AccountCircleIcon style={{ marginRight: '5px' }} />
+        </label>
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -59,7 +64,9 @@ const Signup = (props) => {
           id='name'
           name='name'
         />
-        <label htmlFor='email'>Email</label>
+        <label htmlFor='email'>
+          <MdEmail style={{ marginRight: '5px' }} />
+        </label>
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -68,7 +75,11 @@ const Signup = (props) => {
           id='email'
           name='email'
         />
-        <label htmlFor='password'>Password</label>
+        <label htmlFor='password'>
+          <span className='password-icon-placeholder'>
+            <FaLock />
+          </span>
+        </label>
         <input
           value={password}
           onChange={handlePasswordChange}

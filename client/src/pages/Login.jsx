@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { FaEnvelope, FaLock } from 'react-icons/fa';
 
 const Login = (props) => {
   const [email, setEmail] = useState('');
@@ -23,7 +24,9 @@ const Login = (props) => {
     }}>
       <Container>
         <Form className="auth-form-container login-form" onSubmit={handleSubmit}>
-          <Form.Label>Email</Form.Label>
+          <label htmlFor="email" style={{ display: 'flex', alignItems: 'center' }}>
+            <FaEnvelope style={{ marginRight: '5px' }} />
+          </label>
           <Form.Control
             type="email"
             placeholder="youremail@gmail.com"
@@ -31,7 +34,10 @@ const Login = (props) => {
             onChange={(e) => setEmail(e.target.value)}
           />
 
-          <Form.Label>Password</Form.Label>
+
+          <label htmlFor="password" style={{ display: 'flex', alignItems: 'center' }}>
+            <FaLock style={{ marginRight: '5px' }} />
+          </label>
           <Form.Control
             type="password"
             placeholder="*********"
@@ -39,7 +45,7 @@ const Login = (props) => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <Form.Check >
+          <Form.Check>
             <Form.Check.Input
               type="checkbox"
               checked={rememberMe}

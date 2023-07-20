@@ -7,8 +7,8 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 // import AdminNavbar from '../src/pages/Navbars/AdminNavbar.jsx';
-import UserHeader from './pages/Header/UserHeader.jsx';
-import Header from './pages/Header/Header.jsx';
+import UserHeader from './components/Header/UserHeader.jsx';
+import Header from './components/Header/Header.jsx';
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');

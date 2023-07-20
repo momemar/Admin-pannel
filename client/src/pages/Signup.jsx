@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Form, InputGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './pages.css/Signup.css'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { MdEmail } from 'react-icons/md'
-import { FaLock } from 'react-icons/fa'
+import { BsFillEnvelopeFill } from "react-icons/bs";
 
 const Signup = (props) => {
   const [email, setEmail] = useState('');
@@ -52,15 +50,31 @@ const Signup = (props) => {
 
   return (
     <div className='auth-form-container' style={{ maxWidth: '400px', margin: '0 auto' }}>
-      <form className='signup-form' onSubmit={handleSubmit}>
-        <label htmlFor='name'>
-          <AccountCircleIcon style={{ marginRight: '5px' }} />
-        </label>
-        <input
+      {/* <form className='signup-form' onSubmit={handleSubmit}>
+        <label htmlFor='name'> */}
+      <Form>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control type="email" placeholder="name@example.com" />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Example textarea</Form.Label>
+          <Form.Control type="email" placeholder="name@example.com" />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Example textarea</Form.Label>
+          <Form.Control type="email" placeholder="name@example.com" />
+        </Form.Group>
+        <Button variant="primary">Sign Up</Button>{' '}
+      </Form>
+
+
+      {/* </label> */}
+      {/* <input
           value={name}
           onChange={(e) => setName(e.target.value)}
           type='text'
-          placeholder='Full Name'
+          placeholder='&#xF710'
           id='name'
           name='name'
         />
@@ -106,12 +120,11 @@ const Signup = (props) => {
         {passwordStrength === 'weak' && <p style={{ color: 'red', fontSize: '8px' }}>Password Strength: Weak</p>}
         {passwordStrength === 'medium' && <p style={{ color: 'yellow', fontSize: '8px' }}>Password Strength: Medium</p>}
         {passwordStrength === 'strong' && <p style={{ color: 'green', fontSize: '8px' }}>Password Strength: Strong</p>}
-        <Button className='link-btn custom-small-button' type='submit'>
-          Create Account
-        </Button>
+        
       </form>
       <button className='login-switch-button btn-sm btn-secondary' onClick={() => props.onFormSwitch('login')}>Already have an account? Login here</button>
-    </div>
+   */}
+    </div >
   );
 };
 export default Signup;

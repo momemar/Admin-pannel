@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import './App.css';
-import Signup from './pages/Signup';
+// import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-// import AdminNavbar from '../src/pages/Navbars/AdminNavbar.jsx';
+import Dashboard from './pages/dashboard';
+import Admin from './pages/adminprofile';
+import UserProfile from './pages/UserProfile';
 import UserHeader from './components/Header/UserHeader.jsx';
-import Header from './components/Header/Header.jsx';
+import Sidebar from '../src/components/Sidebar/Sidebar.jsx';
+import TopNav from '../src/components/Header/TopNav.jsx'
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -19,15 +21,19 @@ function App() {
 
   return (
     <Router>
+      <TopNav/>
+      <Sidebar />
       <div className='App'>
-        {/* <AdminNavbar /> */}
-        <UserHeader /> {/* Add this line */}
-        {currentForm === 'login' ? <Login onFormSwitch={toggleForm} /> : <Signup onFormSwitch={toggleForm} />}
-        <Header /> {/* Add this line */}
-        <Dashboard />
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/userProfile" element={<UserProfile />} />
+        <Route path="/admin" element={<Admin />} />
+        {/* <Route path="/signup" element={<Signup />} /> */}
+      </Routes>
       </div>
     </Router>
   );
+
 }
 
 export default App;
